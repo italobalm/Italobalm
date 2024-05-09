@@ -1,0 +1,149 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOlDhc56m8sjkVvZEVB/Ss7",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/italobalm/Italobalm/blob/main/C%C3%93DIGO%20CHATGPT\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 2,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "W9IdSoxsszEu",
+        "outputId": "752ce70a-6903-40a3-d383-87b1b0ce7dfa"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Collecting openai==0.28\n",
+            "  Downloading openai-0.28.0-py3-none-any.whl (76 kB)\n",
+            "\u001b[2K     \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m76.5/76.5 kB\u001b[0m \u001b[31m862.5 kB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\n",
+            "\u001b[?25hRequirement already satisfied: requests>=2.20 in /usr/local/lib/python3.10/dist-packages (from openai==0.28) (2.31.0)\n",
+            "Requirement already satisfied: tqdm in /usr/local/lib/python3.10/dist-packages (from openai==0.28) (4.66.4)\n",
+            "Requirement already satisfied: aiohttp in /usr/local/lib/python3.10/dist-packages (from openai==0.28) (3.9.5)\n",
+            "Requirement already satisfied: charset-normalizer<4,>=2 in /usr/local/lib/python3.10/dist-packages (from requests>=2.20->openai==0.28) (3.3.2)\n",
+            "Requirement already satisfied: idna<4,>=2.5 in /usr/local/lib/python3.10/dist-packages (from requests>=2.20->openai==0.28) (3.7)\n",
+            "Requirement already satisfied: urllib3<3,>=1.21.1 in /usr/local/lib/python3.10/dist-packages (from requests>=2.20->openai==0.28) (2.0.7)\n",
+            "Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests>=2.20->openai==0.28) (2024.2.2)\n",
+            "Requirement already satisfied: aiosignal>=1.1.2 in /usr/local/lib/python3.10/dist-packages (from aiohttp->openai==0.28) (1.3.1)\n",
+            "Requirement already satisfied: attrs>=17.3.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp->openai==0.28) (23.2.0)\n",
+            "Requirement already satisfied: frozenlist>=1.1.1 in /usr/local/lib/python3.10/dist-packages (from aiohttp->openai==0.28) (1.4.1)\n",
+            "Requirement already satisfied: multidict<7.0,>=4.5 in /usr/local/lib/python3.10/dist-packages (from aiohttp->openai==0.28) (6.0.5)\n",
+            "Requirement already satisfied: yarl<2.0,>=1.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp->openai==0.28) (1.9.4)\n",
+            "Requirement already satisfied: async-timeout<5.0,>=4.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp->openai==0.28) (4.0.3)\n",
+            "Installing collected packages: openai\n",
+            "Successfully installed openai-0.28.0\n"
+          ]
+        }
+      ],
+      "source": [
+        "pip install openai==0.28"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import openai"
+      ],
+      "metadata": {
+        "id": "YvVAWVAuwKrC"
+      },
+      "execution_count": 3,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#Configure sua chave de api\n",
+        "#PRINTS-WKS-TEST\n",
+        "openai.api_key = \"sk-proj-s6IruY5SvtCEfqdPKr3iT3BlbkFJWgJWt4UC20QqlcgVA7K4\""
+      ],
+      "metadata": {
+        "id": "fU1der8lwdlQ"
+      },
+      "execution_count": 7,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#Inicialize\n",
+        "conversa = openai.ChatCompletion.create(\n",
+        "    model=\"gpt-3.5-turbo\",\n",
+        "    temperature=1,\n",
+        "    max_tokens=200,\n",
+        "    messages=[\n",
+        "        {\"role\":\"system\", \"content\":\"Você é um professor de geografia\"},\n",
+        "        {\"role\":\"user\", \"content\": \"Monte uma aula sobre os relevos topográficos da Suiça\"},\n",
+        "\n",
+        "    ]\n",
+        ")"
+      ],
+      "metadata": {
+        "id": "a5O4GT3ztbbx"
+      },
+      "execution_count": 10,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#Exiba a resposta do ChatGPT\n",
+        "print('Resposta do ChatGPT:')\n",
+        "print(conversa.choices[0].message.content)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "m24ybdKzv-0W",
+        "outputId": "773d88ba-2831-4ea5-b82d-f6733e3002da"
+      },
+      "execution_count": 11,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Resposta do ChatGPT:\n",
+            "Claro! Vamos falar sobre os relevos topográficos da Suíça.\n",
+            "\n",
+            "A Suíça é um país muito montanhoso, localizado na Europa Central. Sua paisagem é dominada pelos Alpes, que ocupam grande parte do território suíço. Os Alpes suíços são conhecidos por suas altas montanhas, vales profundos, lagos glaciais e geleiras.\n",
+            "\n",
+            "Vamos falar sobre algumas das características mais marcantes do relevo suíço:\n",
+            "\n",
+            "1. **Montanhas:** Os Alpes suíços são formados por uma cadeia de montanhas altas e imponentes. O ponto mais alto da Suíça é o Monte Rosa, com cerca de 4.634 metros de altitude. Outras montanhas famosas incluem o Matterhorn, o Monte Blanc e o Eiger.\n",
+            "\n",
+            "2. **Vales:** Entre as montanhas dos Alpes\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
