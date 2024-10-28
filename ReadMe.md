@@ -1,5 +1,5 @@
 # 💫 About Me:
-Sou estudante de análise e desenvolvimento de sistemas.
+Bem vindo ao meu perfil! Me chamo Ítalo e sou estudante de Análise e Desenvolvimento de Sistemas.
 
 
 ## 🌐 Socials:
